@@ -34,6 +34,5 @@ jobs:
     - name: Run Tests
       shell: bash
       run: |
-        source activate t20-tue-simpeg
-        conda list
+        pip install testipynb
         pytest .
