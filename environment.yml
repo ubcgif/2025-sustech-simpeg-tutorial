@@ -1,15 +1,17 @@
-name: t20-tue-simpeg
+name: 2025-sustech
 
 channels:
   - defaults
   - conda-forge
 dependencies:
-  - python>=3.6
-  - numpy
-  - scipy
-  - matplotlib<3.5
+  - python=3.11
+  - numpy>=1.22
+  - scipy>=1.8
+  - matplotlib
   - jupyter
-  - ipywidgets>=0.6.0
-  - mkl
-  - discretize==0.7.0
-  - simpeg==0.14.1
+  - ipywidgets
+  - pymatsolver>=0.3
+  # - pydiso
+  - python-mumps
+  - discretize>=0.11
+  - simpeg=0.23.0
