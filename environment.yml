@@ -1,8 +1,9 @@
-name: 2025-sustech
+name: 2025-sustech-simpeg
 
 channels:
-  - defaults
   - conda-forge
+  - defaults
+
 dependencies:
   - python=3.11
   - numpy>=1.22
@@ -13,5 +14,6 @@ dependencies:
   - pymatsolver>=0.3
   # - pydiso
   - python-mumps
+  - pytest
   - discretize>=0.11
   - simpeg=0.23.0
