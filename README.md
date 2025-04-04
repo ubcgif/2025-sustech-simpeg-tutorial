@@ -43,7 +43,7 @@ Then, we will work with a synthetic example to
   introduced to some concepts. The [GIFTools Cookbook](https://giftoolscookbook.readthedocs.io/en/latest/content/fundamentals/index.html)
   provides a nice overview.
 
-## Usage
+## Setup
 
 There are a few things you'll need to follow the tutorial:
 
