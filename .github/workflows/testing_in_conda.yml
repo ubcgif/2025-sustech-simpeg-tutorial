@@ -11,9 +11,6 @@ jobs:
   setup-build:
     name: Ex1 (${{ matrix.python-version }}, ${{ matrix.os }})
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: bash -l {0}
     strategy:
       fail-fast: false
       matrix:
@@ -21,25 +18,20 @@ jobs:
         python-version: ["3.11"]
 
     steps:
-    - uses: actions/checkout@v4
-      with:
-          fetch-depth: 0
-
+    - uses: actions/checkout@v2
     - name: Setup Conda
-      uses: conda-incubator/setup-miniconda@v3
+      uses: mamba-org/setup-micromamba@v1
       with:
-        auto-update-conda: true
-        activate-environment: 2025-sustech-simpeg
-        channels: conda-forge
         environment-file: environment.yml
-        python-version: ${{ matrix.python-version }}
-    - name: Install Env
+        init-shell: >-
+          bash
+          powershell
+        create-args: >-
+          python=${{ matrix.python-version }}
+        cache-environment: true
+        post-cleanup: 'all'
+    - name: Run Tests
+      shell: micromamba-shell {0}
       run: |
         pip install testipynb
-        conda info
-        conda config --show
-        conda list
-    - name: Run Tests
-      shell: bash
-      run: |
-        pytest .
+        pytest test_notebooks.py -v
