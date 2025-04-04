@@ -1,48 +1,11 @@
 **[summary](#summary) | [prerequisites](#prerequisites) | [setup](#setup) | [resources](#resources) | [license](#license)**
 
-# Transform 2020: Geophysical inversions with SimPEG
+# Geophysical inversions with SimPEG: Tutorial at SUSTech in April 2025
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/simpeg/transform-2020-simpeg/main)
-[![License](https://img.shields.io/github/license/simpeg/transform-2020-simpeg.svg)](https://github.com/simpeg/transform-2020-simpeg/blob/main/LICENSE)
-
-|         | Info |
-|--------:|:-----|
-| When    | Tuesday, June 9 • 12:00 - 15:00 UTC |
-| Slack   | [Software Underground](https://softwareunderground.org/) channel `t20-tue-simpeg` |
-| YouTube | https://youtu.be/jZ7Sj9cnnso |
-| conda environment  | `t20-tue-simpeg` |
-| Intro Slides  | [SimPEG Transform presentation](https://docs.google.com/presentation/d/1Iw0chJUvjaiuGpQIqiYal719pcvWD2xs2z2aXkpQThQ/edit?usp=sharing) |
-
-**Team**
-- [Lindsey Heagy](http://github.com/lheagy) (Instructor)
-- [Seogi Kang](https://github.com/sgkang)
-- [Joe Capriotti](https://github.com/jcapriot)
-- [Dom Fournier](https://github.com/fourndo)
-- [John Kuttai](https://github.com/JKutt)
-- [Dieter Werthmüller](http://github.com/prisae)
-- [Doug Oldenburg](http://github.com/dougoldenburg)
-- and the [SimPEG contributors](https://github.com/simpeg/simpeg/graphs/contributors)
-
-## Before the tutorial
-
-Make sure you've done these things before the tutorial on Tuesday:
-
-1. Sign-up for the [Software Underground Slack](https://softwareunderground.org/slack)
-1. Join the channel `t20-tue-simpeg`. This is where **all communication will happen**.
-1. Set up your computer ([instructions below](#usage)). We will not have time to
-   solve many computer issues during the tutorial so make sure you do this
-   ahead of time. If you need any help, ask at the `t20-tue-simpeg` channel on
-   Slack.
-1. If you have some data you'd like to process, please have it ready and make
-   sure you can load it with pandas or numpy. You'll have some time at the end
-   of the tutorial to work on your own data.
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ubcgif/2025-sustech-simpeg-tutorial/main)
+[![License](https://img.shields.io/github/license/ubcgif/2025-sustech-simpeg-tutorial.svg)](https://github.com/ubcgif/2025-sustech-simpeg-tutorial/blob/main/LICENSE)
 
 ## Summary
-
-This repo contains the notebooks and tutorial resources for the Transform 2020 tutorial on Simulations and inversions with SimPEG.
-
-- [Session Description](https://transform2020.sched.com/event/cD5V/tutorial-geophysical-inversion-in-simpeg)
-- [Intro Slides](https://docs.google.com/presentation/d/1Iw0chJUvjaiuGpQIqiYal719pcvWD2xs2z2aXkpQThQ/edit?usp=sharing)
 
 In this tutorial, we will provide a hand-on overview of using SimPEG to simulate and invert geophysical data. The examples we plan to work through use Direct Current (DC) Resistivity and Induced Polarization (IP) data from the Century Zinc Deposit in Australia.
 
@@ -61,9 +24,8 @@ Then, we will work with a synthetic example to
 
 **Software**
 
-* Some knowledge of Python is assumed (for example, you might want to attend the
-  [getting started with python](https://transform2020.sched.com/event/c7Jm/getting-started-with-python) or
-  [more python for subsurface](https://transform2020.sched.com/event/c7Jn/more-python-for-subsurface) tutorials).
+* Some knowledge of Python is assumed (for example, you might want to watch the
+  [getting started with python](https://transform.softwareunderground.org/2022-getting-started-python) tutorial).
 * All coding will be done in Jupyter notebooks. I'll explain how they work
   briefly but it will help if you've used them before.
 * We'll use [numpy](https://numpy.org/), [matplotlib](https://matplotlib.org/), and
@@ -81,28 +43,25 @@ Then, we will work with a synthetic example to
   introduced to some concepts. The [GIFTools Cookbook](https://giftoolscookbook.readthedocs.io/en/latest/content/fundamentals/index.html)
   provides a nice overview.
 
-## Usage
+## Setup
 
 There are a few things you'll need to follow the tutorial:
 
-1. A working Python installation ([Anaconda](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html))
-2. The SimPEG *conda environment* installed
+1. A working Python installation. I recommend using [Miniforge](https://github.com/conda-forge/miniforge), but you can also use [Anaconda](https://www.anaconda.com/download)
+2. To install the [conda environment](./environment.yml) for this tutorial
 3. A web browser that works with Jupyter
    (basically anything except Internet Explorer)
 
-To get things setup, please do the following.
-
-**If you have any trouble**, please ask for help in the
-`t20-tue-simpeg` channel on the Software Underground slack.
-
-**Windows users:** When you see "*terminal*" in the instructions,
+**Windows users:** If you ar using Anaconda, when you see "*terminal*" in the instructions,
 this means the "*Anaconda Prompt*" program for you.
 
 ### Step 1: Python
 
-**Follow the general instructions for Transform2020:** http://swu.ng/t20-python-setup
-(there are also YouTube videos of [Windows](https://youtu.be/FdatS_NKVrM)
-and [Linux](https://youtu.be/3ncwbHyZeAg))
+Install Python on your machine. I recommend using [Miniforge](https://github.com/conda-forge/miniforge), but you can also use [Anaconda](https://www.anaconda.com/download)
+
+If you are looking for tutorials, you can take a look at these videos:
+for [Windows](https://youtu.be/FdatS_NKVrM)
+and [Linux](https://youtu.be/3ncwbHyZeAg)
 
 This will get you a working Python 3 installation with the `conda` package
 manager. If you already have one, you can skip this step.
@@ -111,55 +70,53 @@ manager. If you already have one, you can skip this step.
 
 To access the notebooks, there are 3 options (in order of preference):
 1. Use git to clone this repository
-2. From GitHub, you can use the `download` option to download this repository as a zip file (follow all instructions below, replacing the `git clone` step with download and unzip the zip file with the repository contents.
-3. You can run the notebooks online with binder through: https://mybinder.org/v2/gh/simpeg/transform-2020-simpeg/main
+2. From GitHub, you can use the `download` option to download this repository as a zip file (follow all instructions below, replacing the `git clone` step with download and unzip the zip file with the repository contents).
+3. You can run the notebooks online with binder through: https://mybinder.org/v2/gh/ubcgif/2025-sustech-simpeg-tutorial/main
 
 To clone this repository, open up a terminal and navigate to where you want this repository stored on your computer.
 
 Then run
 ```
-git clone https://github.com/simpeg/transform-2020-simpeg.git
+git clone https://github.com/ubcgif/2025-sustech-simpeg-tutorial.git
 ```
-to clone the repository, and `cd` into the `transform-2020-simpeg` directory
+to clone the repository, and `cd` into the `2025-sustech-simpeg-tutorial` directory
 ```
-cd transform-2020-simpeg
+cd 2025-sustech-simpeg-tutorial
 ```
+
+Alternatively, you can download the zip file of the tutorial contents, unzip those contents and open a
+terminal in the `2025-sustech-simpeg-tutorial` directory that contains the tutorial contents.
 
 ### Step 3: Create the SimPEG tutorial conda environment
 
-From inside of the `transform-2020-simpeg` repository, create the `t20-tue-simpeg` conda environment
+From inside of the `2025-sustech-simpeg-tutorial` repository, create the `2025-sustech-simpeg` conda environment
 ```
 conda env create -f environment.yml
 ```
 and activate the environment
 ```
-conda activate t20-tue-simpeg
+conda activate 2025-sustech-simpeg
 ```
 
 ### Step 4: Launching the notebooks
 
 Once you have activated the conda environment, you can launch the notebooks
 ```
-jupyter notebook
+jupyter lab
 ```
 Jupyter will then launch in your web-browser.
 
-If you are able to open any one of the notebooks and run the first cell, then you should be good to go!
-If you run into issues, please post in the #t20-tue-simpeg slack channel.
-
 ## Resources
+
+**Resources on SimPEG**
+- [Docs](http://docs.simpeg.xyz/)
+- [Mattermost chat](https://mattermost.softwareunderground.org/simpeg)
 
 **Resources on Geophysics and Inversions**
 - [Geophysics for Practicing Geoscientists](https://gpg.geosci.xyz/)
 - [EM GeoSci](http://em.geosci.xyz/)
 - Lectures from EOSC 350: Exploration & Environmental Geophysics ([2017](https://www.youtube.com/watch?v=C1U2okdfMbU&list=PLd9tNwsUm9jOhbLqjhjDW6ASqwRJtHTb5), [2018](https://www.youtube.com/watch?v=7kFPNooixyw&list=PLd9tNwsUm9jPrWrpdg1JHLieKrzK5w8_-))
 - DISC 2017 lectures ([Mexico City](https://www.youtube.com/watch?v=uCnfWXWs5MM&list=PLd9tNwsUm9jM8GWLJm7XLLrE9PYuK-ca2))
-
-**Resources on SimPEG**
-- [Docs](http://docs.simpeg.xyz/)
-- [Discourse](http://simpeg.discourse.group/)
-- [Slack](http://slack.simpeg.xyz/)
-- [This Tutorial](https://github.com/simpeg/transform-2020-tutorial/)
 
 
 ## License
