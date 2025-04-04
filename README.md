@@ -70,7 +70,7 @@ manager. If you already have one, you can skip this step.
 
 To access the notebooks, there are 3 options (in order of preference):
 1. Use git to clone this repository
-2. From GitHub, you can use the `download` option to download this repository as a zip file (follow all instructions below, replacing the `git clone` step with download and unzip the zip file with the repository contents).
+2. You can use the `download` option to download this repository as a zip file from GitHub or using this link: https://github.com/ubcgif/2025-sustech-simpeg-tutorial/archive/refs/heads/main.zip. If you do this, follow all instructions below, replacing the `git clone` step with download and unzip the zip file with the repository contents.
 3. You can run the notebooks online with binder through: https://mybinder.org/v2/gh/ubcgif/2025-sustech-simpeg-tutorial/main
 
 To clone this repository, open up a terminal and navigate to where you want this repository stored on your computer.
